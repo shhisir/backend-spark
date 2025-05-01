@@ -11,7 +11,7 @@
     res.send("message for user from id")
 
   })
-
+ require("./config/database")
 
 
 
