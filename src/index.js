@@ -6,10 +6,10 @@ const {handdleError} = require('./middleware/haddlerror.js')
 const user=require("./routes/index")
 const dotenv = require("dotenv")
 
-
+require("./config/database")
 
  const app = express();
-
+app.use(express.json())
 
 // middleware
 app.get("/", (req, res) => {
@@ -21,16 +21,18 @@ dotenv.config()
 const port = process.env.PORT
 
 
+app.get("",(req, res) => {
+  res.send("server is listening");
+})
 
-app.get("/test",isAuth,getuse)
-
+app.use(user)
 
 app.listen(port, () => {
-  console.log("server is running on port ");
+  console.log("server is running on port ",port);
 });
 
 
 
 // install post man 
 // install mongodb
-// install mongosh 
+// install mongosh  // git add . // git commit -m "message" // git push 

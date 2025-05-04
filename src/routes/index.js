@@ -1,17 +1,12 @@
  const express =  require ("express")
 
+ const {createUser, getuser} = require("../controller/controller_user")
+
  const router = express.Router()
  
-  router.get("/user",(req,res,next)=>{
-    res.send("message for user")
-
-  })
+  router.get("/user",getuser)
    
-  router.get("/user/:id",(req,res,next)=>{
-    res.send("message for user from id")
-
-  })
- require("./config/database")
+  
 
 
 
