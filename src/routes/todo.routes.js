@@ -1,9 +1,9 @@
- const express = require("express")
-const { getTodo } = require("../controller/todo.controller")
+//  const express = require("express")
+// const { getTodo } = require("../controller/todo.controller")
 
- const routeer = rxpress.Router()
+//  const routeer = express.Router()
 
- router.get("/todo",getTodo)
- router.post("/todo",createTodo)
+//  router.get("/todo",getTodo)
+//  router.post("/todo",createTodo)
 
- module.exports=router
+//  module.exports=router

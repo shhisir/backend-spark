@@ -27,7 +27,7 @@ app.get("",(req, res) => {
 })
 
 app.use(user)
-app.use(todo)
+// app.use(todo)
 
 app.listen(port, () => {
   console.log("server is running on port ",port);

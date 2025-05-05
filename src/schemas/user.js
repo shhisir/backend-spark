@@ -1,73 +1,66 @@
 const mongoose = require('mongoose');
 
-const movieSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  genres: {
-    type: [String],
-    required: true
-  },
-  runtime: {
-    type: Number,
-    required: true
-  },
-  rated: {
-    type: String,
-    required: true
-  },
-  year: {
-    type: Number,
-    required: true
-  },
-  releaseDate: {
-    type: Date // ISO date format
-  },
-  directors: {
-    type: [String],
-    required: true
-  },
-  cast: {
-    type: [String],
-    required: true
-  },
-  language: {
-    type: String,
-    default: 'English'
-  },
-  country: {
-    type: String,
-    default: 'USA'
-  },
-  description: {
-    type: String,
-    trim: true
-  },
-  ratings: {
-    imdb: {
-      type: Number,
-      min: 0,
-      max: 10
+const userSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true,       
+        minlength: 3,
+        maxlength: 30
     },
-    rottenTomatoes: {
-      type: Number,
-      min: 0,
-      max: 100
-    }
-  },
-  type: {
-    type: String,
-    enum: ['movie', 'series', 'documentary'],
-    required: true
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  }
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true,
+        lowercase: true, 
+        match: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, 
+        validate:(data)=>{
+
+        }
+    },
+    password: {
+        type: String,
+        required: true,
+        
+    },
+    firstName: {
+        type: String,
+        required: false, 
+        trim: true,
+        maxlength: 50
+    },
+    lastName: {
+        type: String,
+        required: false,
+        trim: true,
+        maxlength: 50
+    },
+    dateOfBirth: {
+        type: Date,
+        required: false 
+    },
+    profilePicture: { 
+        type: String,
+        required: false,
+        trim: true
+    },
+    role: {
+        type: String,
+        enum: ['user', 'admin', 'editor'], 
+        default: 'user'
+    },
+    isActive: {
+        type: Boolean,
+        default: true
+    },
+    
+},{
+    timestamps:true
 });
 
-const Movie = mongoose.model('Movie', movieSchema);
 
-module.exports = Movie;
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
