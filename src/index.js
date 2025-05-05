@@ -5,6 +5,7 @@ const {handdleError} = require('./middleware/haddlerror.js')
  const {sum} = require("./add.js")
 const user=require("./routes/index")
 const dotenv = require("dotenv")
+const todo = require("./routes/todo.routes")
 
 require("./config/database")
 
@@ -26,6 +27,7 @@ app.get("",(req, res) => {
 })
 
 app.use(user)
+app.use(todo)
 
 app.listen(port, () => {
   console.log("server is running on port ",port);
@@ -36,3 +38,6 @@ app.listen(port, () => {
 // install post man 
 // install mongodb
 // install mongosh  // git add . // git commit -m "message" // git push 
+
+
+

@@ -3,6 +3,7 @@
 
 
  const getuser =async(req,res,next)=>{
+   console.log(req.body)
    try{
       const user=await User.find()
       res.status(200).send(user)
